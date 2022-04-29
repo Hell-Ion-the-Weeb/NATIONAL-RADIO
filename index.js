@@ -4,7 +4,7 @@ const config = require('./config.json');
 const ytdl = require('ytdl-core');
 const token = config.token;
 
-client.on('ready', () => {
+client.on('ready', async () => {
 
 var Songs2 = [
     'https://youtu.be/G4nqsKeJJ-A',
@@ -22,9 +22,9 @@ var Songs2 = [
     'https://youtu.be/VoF9HUvYPKs'
 ]
 
-var Song = Songs2[Math.floor(Math.random() * Songs2.length)];
+var Song = await Songs2[Math.floor(Math.random() * Songs2.length)];
 
-ytdl.getInfo(Song).then(async info => {
+ytdl.getInfo(Song).then(info => {
 
     console.log('Ready')
 
@@ -32,8 +32,6 @@ ytdl.getInfo(Song).then(async info => {
 
     Vchannel.join().then(connection => {
         const Play = async () => {
-
-            var Song = await Songs2[Math.floor(Math.random() * Songs2.length)];
 
                 connection.play(ytdl(Song, {highWaterMark: 1<<25})).on('finish', Play)
         }
