@@ -43,7 +43,7 @@ client.on('ready', () => {
 
             var Song = await Songs[Math.floor(Math.random() * Songs.length)];
 
-                connection.play(ytdl(Song, {highWaterMark: 1<<25})).on('finish', Play)
+                connection.play(ytdl(Song, {highWaterMark: 1<<25})).on('finish', Play);
 
     ytdl.getInfo(Song).then(info => {
 
